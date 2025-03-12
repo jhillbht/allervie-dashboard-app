@@ -1,0 +1,2 @@
+# Root requirements file to help buildpack detection
+-r backend/requirements.txt
