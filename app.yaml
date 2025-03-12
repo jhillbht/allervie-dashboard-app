@@ -4,8 +4,8 @@ services:
 - name: api
   github:
     branch: main
-    repo: jhillbht/allervie-dashboard-app
     deploy_on_push: true
+    repo: jhillbht/allervie-dashboard-app
   http_port: 5002
   routes:
   - path: /
@@ -25,36 +25,18 @@ services:
     value: "false"
   - key: ENVIRONMENT
     value: "production"
-  - key: GOOGLE_ADS_CLIENT_ID
-    scope: RUN_TIME
-    value: "YOUR_CLIENT_ID.apps.googleusercontent.com"
-  - key: GOOGLE_ADS_CLIENT_SECRET
-    type: SECRET
-    scope: RUN_TIME
-    value: "YOUR_CLIENT_SECRET"
-  - key: GOOGLE_ADS_DEVELOPER_TOKEN
-    type: SECRET
-    scope: RUN_TIME
-    value: "YOUR_DEVELOPER_TOKEN"
-  - key: GOOGLE_ADS_LOGIN_CUSTOMER_ID
-    scope: RUN_TIME
-    value: "YOUR_LOGIN_CUSTOMER_ID"
-  - key: GOOGLE_ADS_REFRESH_TOKEN
-    type: SECRET
-    scope: RUN_TIME
-    value: "YOUR_REFRESH_TOKEN"
-  - key: GOOGLE_ADS_USE_PROTO_PLUS
-    value: "true"
-  - key: GOOGLE_ADS_API_VERSION
-    value: "v17"
   - key: TOKEN_AUTO_REFRESH_ENABLED
     value: "true"
   - key: AUTO_REFRESH_INTERVAL_MINUTES
     value: "30"
-  - key: CLIENT_CUSTOMER_ID
-    value: "YOUR_CLIENT_CUSTOMER_ID"
   - key: USE_ENHANCED_REFRESH
+    value: "true"
+  - key: USE_REAL_ADS_CLIENT
     value: "true"
   - key: APP_URL
     scope: RUN_AND_BUILD_TIME
     value: ${APP_URL}
+  - key: GOOGLE_ADS_YAML
+    scope: RUN_TIME
+    type: SECRET
+    value: Y2xpZW50X2lkOiAyMjA4MzYxMzc1NC1kMW9tZWcyOTU4dnJzbmRwcWcydjFqcDBuY203c3IyMy5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQpjbGllbnRfc2VjcmV0OiBHT0NTUFgtNi1PX0hpdDlmYko4TWVjRUxtbDZ6VW95bVhmVQpkZXZlbG9wZXJfdG9rZW46IEVrWEZFTmphaFNEbnBOUlpKaFdBQXcKbG9naW5fY3VzdG9tZXJfaWQ6IDgxMjc1Mzk4OTIKcmVmcmVzaF90b2tlbjogMS8vMGYxeDZydEdQdmozYUNnWUlBUkFBR0E4U053Ri1MOUlyMmJ6SUhYTUlOYmVxWU9XbkZxNGcwSXFmbXhJcVp4cndfVUlWUHlTZnprUk5PbUVOVHV0VEdhNGtEUlk0SDlVTlhmawp1c2VfcHJvdG9fcGx1czogdHJ1ZQphcGlfdmVyc2lvbjogdjE3Cg==
