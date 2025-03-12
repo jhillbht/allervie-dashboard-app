@@ -4,7 +4,7 @@
 set -e  # Exit on any error
 
 # Configuration
-APP_NAME="allervie-analytics-dashboard"
+APP_NAME="allervie-dashboard-app-2025"  # Changed name to avoid conflict
 GITHUB_REPO="jhillbht/allervie-dashboard-app"
 BRANCH="main"
 DEPLOYMENT_ENV=${1:-"production"}  # Default to production unless specified
@@ -84,7 +84,7 @@ services:
 EOL
 
 echo "=== Checking if app exists ==="
-if doctl apps list --format Name | grep -q "^$APP_NAME$"; then
+if doctl apps list | grep -q "$APP_NAME"; then
     echo "App exists, updating..."
     doctl apps update "$APP_NAME" --spec app.yaml
 else
