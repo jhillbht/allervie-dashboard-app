@@ -5,7 +5,7 @@ set -e  # Exit on any error
 
 # Configuration
 APP_NAME="allervie-analytics-dashboard"
-GITHUB_REPO="YOUR_USERNAME/allervie-dashboard-app"
+GITHUB_REPO="jhillbht/allervie-dashboard-app"
 BRANCH="main"
 DEPLOYMENT_ENV=${1:-"production"}  # Default to production unless specified
 

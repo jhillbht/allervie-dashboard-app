@@ -4,7 +4,7 @@ services:
 - name: api
   github:
     branch: main
-    repo: YOUR_USERNAME/allervie-dashboard-app
+    repo: jhillbht/allervie-dashboard-app
     deploy_on_push: true
   http_port: 5002
   routes:
