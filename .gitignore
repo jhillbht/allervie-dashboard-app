@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Google Ads API credentials
+google-ads.yaml
+*.b64
+credentials/
+*.key
+*.json
+*.creds
+
+# Logs
+*.log
+logs/
+
+# Local configuration
+.env
+.env.local
+
+# Production files
+*.pyc
+*.pyo
+*.pyd
+.Python

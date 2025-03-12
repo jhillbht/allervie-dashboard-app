@@ -1,0 +1,12 @@
+flask==2.0.1
+flask-cors==3.0.10
+python-dotenv==0.19.0
+requests==2.28.2
+google-auth==2.22.0
+google-auth-oauthlib==1.0.0
+google-api-python-client==2.95.0
+werkzeug==2.0.3
+jinja2==3.0.3
+itsdangerous==2.0.1
+google-ads==21.0.0
+pytz==2023.3
