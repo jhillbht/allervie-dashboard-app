@@ -5,7 +5,7 @@ set -e  # Exit on any error
 
 # Configuration
 APP_NAME="allervie-analytics-dashboard"
-GITHUB_REPO="yourusername/allervie-dashboard-app"
+GITHUB_REPO="YOUR_USERNAME/allervie-dashboard-app"
 BRANCH="main"
 DEPLOYMENT_ENV=${1:-"production"}  # Default to production unless specified
 
@@ -37,40 +37,50 @@ GOOGLE_ADS_YAML_B64=$(base64 -i ./backend/google-ads.yaml)
 
 echo "=== Creating/updating app configuration ==="
 
-# Create app.yaml dynamically
+# Create app.yaml dynamically with detailed configuration
 cat > app.yaml << EOL
 name: $APP_NAME
+region: nyc
 services:
 - name: api
   github:
     branch: $BRANCH
     deploy_on_push: true
     repo: $GITHUB_REPO
+  http_port: 5002
+  routes:
+  - path: /
+    preserve_path_prefix: true
+  health_check:
+    http_path: /api/health
+  instance_count: 1
+  instance_size_slug: basic-xxs
   envs:
   - key: FLASK_APP
     value: backend/app.py
   - key: FLASK_ENV
     value: $DEPLOYMENT_ENV
   - key: ALLOW_MOCK_DATA
+    value: "false" 
+  - key: ALLOW_MOCK_AUTH
     value: "false"
+  - key: ENVIRONMENT
+    value: "$DEPLOYMENT_ENV"
+  - key: TOKEN_AUTO_REFRESH_ENABLED
+    value: "true"
+  - key: AUTO_REFRESH_INTERVAL_MINUTES
+    value: "30"
+  - key: USE_ENHANCED_REFRESH
+    value: "true"
+  - key: USE_REAL_ADS_CLIENT
+    value: "true"
   - key: APP_URL
     scope: RUN_AND_BUILD_TIME
     value: \${APP_URL}
-  - key: AUTO_REFRESH_TOKENS
-    value: "true"
-  - key: ENVIRONMENT
-    value: $DEPLOYMENT_ENV
-  - key: USE_REAL_ADS_CLIENT
-    value: "true"
   - key: GOOGLE_ADS_YAML
     scope: RUN_TIME
     type: SECRET
     value: $GOOGLE_ADS_YAML_B64
-  run_command: cd backend && gunicorn app:app
-  instance_size_slug: basic-xxs
-  routes:
-  - path: /
-  source_dir: /
 EOL
 
 echo "=== Checking if app exists ==="
